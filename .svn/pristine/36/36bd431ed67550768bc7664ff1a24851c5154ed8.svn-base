@@ -1,0 +1,71 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link href="<%=request.getContextPath()%>/resource/front/css/common.css" rel="stylesheet" type="text/css" />
+<link href="<%=request.getContextPath()%>/resource/front/css/reg/reg.css" rel="stylesheet" type="text/css" />
+<meta charset="UTF-8">
+<title>个人注册</title>
+</head>
+<body>
+	<!--
+        	作者：offline
+        	时间：2018-08-04
+        	描述：头
+        -->
+	<div class="header">
+		<a href="index.html"><img src="img/login/logo.png" /></a> <span>欢迎注册</span>
+		<i></i>
+		<div>
+			<span>已有账号?</span> <a href="login.html">请登录&gt;</a>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footer-reg">
+			<form>
+				<div class="footer-reg-id">
+					<span class="footer-reg-id-header">账号：</span> <span
+						class="footer-reg-id-input"> <input type="text" name="id"
+						class="textbox" maxlength="15" />
+					</span>
+				</div>
+				<div class="footer-reg-pwd">
+					<span class="footer-reg-id-pwd">密码：</span> <span
+						class="footer-reg-pwd-input"> <input type="password"
+						name="pwd" class="textbox" maxlength="15" />
+					</span>
+				</div>
+				<div class="footer-reg-pwd" style="top: 110px">
+					<span class="footer-reg-id-repwd">确认密码：</span> <span
+						class="footer-reg-repwd-input"> <input type="password"
+						name="repwd" class="textbox" maxlength="15" />
+					</span>
+				</div>
+				<div class="footer-reg-submit">
+					<input type="submit" value="注册" class="submit" />
+				</div>
+			</form>
+		</div>
+		<div class="footer-bottom">
+			<div class="footer-nav">
+				<a rel="nofollow" target="_blank"
+					href="//www.jd.com/intro/about.aspx"> 关于我们</a>| <a rel="nofollow"
+					target="_blank" href="//www.jd.com/contact/">联系我们</a>| <a
+					rel="nofollow" target="_blank" href="//zhaopin.jd.com/">人才招聘</a>| <a
+					rel="nofollow" target="_blank"
+					href="//www.jd.com/contact/joinin.aspx">商家入驻</a>| <a
+					rel="no  follow" target="_blank"
+					href="//www.jd.com/intro/service.aspx">广告服务</a>| <a rel="nofollow"
+					target="_blank" href="//app.jd.com/">手机京东</a>| <a target="_blank"
+					href="//club.jd.com/links.aspx">友情链接</a>| <a target="_blank"
+					href="//media.jd.com">销售联盟</a>| <a href="//club.jd.com/"
+					target="_blank">京东社区</a>| <a href="//gongyi.jd.com" target="_blank">京东公益</a>|
+				<a target="_blank" href="//en.jd.com/"
+					clstag="pageclick|keycount|20150112ABD|9">English Site</a>
+			</div>
+			<div class="copyright">Copyright©2004-2018 京东JD.com 版权所有</div>
+		</div>
+	</div>
+</body>
+</html>

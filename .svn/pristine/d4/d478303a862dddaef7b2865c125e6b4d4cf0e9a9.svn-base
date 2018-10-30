@@ -1,0 +1,79 @@
+package com.iwonder.tea.front.action;
+
+import java.io.IOException;
+import java.util.UUID;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.iwonder.tea.framework.action.BaseServlet;
+import com.iwonder.tea.framework.service.ProxyServiceFactory;
+import com.iwonder.tea.framework.util.MailUtils;
+import com.iwonder.tea.framework.util.UUIDUtils;
+import com.iwonder.tea.usr.entity.UserInfo;
+import com.iwonder.tea.usr.service.IUserInfoService;
+import com.iwonder.tea.usr.service.imp.UserInfoServiceImp;
+
+@WebServlet("/UserLogRegServlet.do")
+public class UserLogRegServlet extends BaseServlet {
+	private static final long serialVersionUID = 1L;
+	private IUserInfoService iUserInfoService = (IUserInfoService) ProxyServiceFactory
+			.getProxyService(UserInfoServiceImp.class);
+
+	public UserLogRegServlet() {
+		super();
+	}
+
+	public void register(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String userEmail = request.getParameter("userEmail");
+		String name = request.getParameter("name");
+		String userPwdLogin = request.getParameter("userPwdLogin");
+		UserInfo userInfo = new UserInfo();
+		userInfo.setEmail(userEmail);
+		userInfo.setName(name);
+		userInfo.setPwdLogin(userPwdLogin);
+		userInfo.setUserId(UUIDUtils.getId());
+		System.out.println(userInfo.toString());
+		iUserInfoService.insert(userInfo);
+
+		// 注册成功,向用户邮箱发送信息,跳转到提示页面
+		// 发送带激活码的邮件,到注册的账户中
+		MailUtils mailUtils = new MailUtils(userInfo.getEmail(), userInfo.getPwdLogin());
+		mailUtils.run();
+		request.setAttribute("msg", "用户注册成功,请激活!");
+		// 注册失败,跳转到提示页面
+		request.setAttribute("msg", "用户注册失败,请重试!");
+		request.getRequestDispatcher("/WEB-INF/jsp/front/login.jsp").forward(request, response);
+	}
+
+	public void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userEmail = request.getParameter("userEmail");
+		String userPwdLogin = request.getParameter("userPwdLogin");
+		UserInfo userInfo = new UserInfo();
+		userInfo.setEmail(userEmail);
+		userInfo.setPwdLogin(userPwdLogin);
+		userInfo = iUserInfoService.login(userInfo);
+		if (userInfo == null) {
+			// 登录失败
+			request.getRequestDispatcher("/WEB-INF/jsp/front/login.jsp").forward(request, response);
+		} else {
+			// 登录成功
+			String name = userInfo.getName();
+			//String name = userInfo.getEmail();
+			request.getSession().setAttribute("name", name);
+			request.getRequestDispatcher("IndexServlet.do").forward(request, response);
+		}
+	}
+
+	public void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 清除session
+		request.getSession().invalidate();
+		// 重新定向到首页
+		response.sendRedirect("IndexServlet.do");
+
+	}
+
+}

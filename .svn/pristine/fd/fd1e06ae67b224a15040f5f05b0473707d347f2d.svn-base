@@ -1,0 +1,60 @@
+package com.iwonder.tea.ord.service.imp;
+
+import java.util.ArrayList;
+
+import com.iwonder.tea.framework.service.imp.BaseServiceImp;
+import com.iwonder.tea.ord.dao.IOrderDao;
+import com.iwonder.tea.ord.dao.IOrderSKUDao;
+import com.iwonder.tea.ord.dao.imp.OrderDaoImp;
+import com.iwonder.tea.ord.dao.imp.OrderSKUDaoImp;
+import com.iwonder.tea.ord.entity.OrderSKU;
+import com.iwonder.tea.ord.service.IOrderSKUService;
+import com.iwonder.tea.ord.view.OrderSKUConditionView;
+import com.iwonder.tea.ord.view.OrderSKUQueryView;
+
+
+public class OrderSKUServiceImp extends BaseServiceImp implements IOrderSKUService {
+	private IOrderSKUDao orderSKUDao = new OrderSKUDaoImp();
+
+
+	public void insert(OrderSKU orderSKU) {
+		
+		orderSKUDao.insert(orderSKU);
+		
+	}
+
+	public ArrayList<OrderSKU> list() {
+		
+		return orderSKUDao.list();
+
+	}
+	public ArrayList<OrderSKUQueryView> list(OrderSKUConditionView orderSKUConditionView) {
+		
+		return orderSKUDao.list(orderSKUConditionView);
+
+	}
+
+	public OrderSKU load(String   orderDtlId) {
+		
+	return orderSKUDao.load(orderDtlId);
+		
+		
+	}
+
+	public void update(OrderSKU orderSKU) {
+		
+		orderSKUDao.update(orderSKU);
+		
+		
+	}
+
+	public void delete(String orderDtlId) {
+		orderSKUDao.delete(orderDtlId);
+	
+
+	}
+
+	
+
+	
+}

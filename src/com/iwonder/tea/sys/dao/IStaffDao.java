@@ -1,0 +1,24 @@
+package com.iwonder.tea.sys.dao;
+
+import java.util.ArrayList;
+
+import com.iwonder.tea.sys.entity.Staff;
+import com.iwonder.tea.sys.view.StaffConditionView;
+import com.iwonder.tea.sys.view.StaffQueryView;
+
+public interface IStaffDao {
+
+	public ArrayList<Staff> list();
+	
+	public ArrayList<StaffQueryView> list(StaffConditionView staffConditionView);
+	
+	public void delete(String staffId);
+	
+	public Staff load(String staffId);
+	
+	public void insert(Staff staff);
+	
+	public void update(Staff staff);
+
+	public Staff login(Staff staff);
+}

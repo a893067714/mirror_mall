@@ -1,0 +1,85 @@
+package com.iwonder.tea.ord.service.imp;
+
+import java.util.ArrayList;
+
+import com.iwonder.tea.framework.service.imp.BaseServiceImp;
+import com.iwonder.tea.ord.dao.IOrderDao;
+import com.iwonder.tea.ord.dao.imp.OrderDaoImp;
+import com.iwonder.tea.ord.entity.Order;
+import com.iwonder.tea.ord.service.IOrderSKUService;
+import com.iwonder.tea.ord.service.IOrderService;
+import com.iwonder.tea.ord.view.OrderConditionView;
+import com.iwonder.tea.ord.view.OrderQueryView;
+import com.iwonder.tea.ord.view.OrderSKUConditionView;
+import com.iwonder.tea.ord.view.OrderView;
+
+public class OrderServiceImp extends BaseServiceImp implements IOrderService {
+	private IOrderDao orderDao = new OrderDaoImp();
+	private IOrderSKUService orderSKUService = new OrderSKUServiceImp();
+
+	public Order insert(Order order) {
+
+		return orderDao.insert(order);
+
+	}
+
+	public ArrayList<Order> list() {
+		return orderDao.list();
+
+	}
+
+	public ArrayList<OrderQueryView> list(OrderConditionView orderConditionView) {
+		return orderDao.list(orderConditionView);
+	}
+
+	public Order load(String orderId) {
+
+		return orderDao.load(orderId);
+
+	}
+
+	public void update(Order order) {
+
+		orderDao.update(order);
+
+	}
+
+	public void delete(String orderId) {
+		orderDao.delete(orderId);
+
+	}
+
+	/**
+	 * @return
+	 */
+
+	public ArrayList<OrderView> listView(String userId) {
+		ArrayList<OrderView> listOrderView = new ArrayList<OrderView>();
+		OrderConditionView x = new OrderConditionView();
+		x.setUserId(userId);
+		ArrayList<OrderQueryView> listOrderQueryView = this.list(x);
+		for (Order order : listOrderQueryView) {
+
+			OrderView orderView = new OrderView();
+
+			OrderSKUConditionView orderSKUConditionView = new OrderSKUConditionView();
+			orderSKUConditionView.setOrderId(order.getOrderId());
+
+			orderView.setOrderId(order.getOrderId());
+			orderView.setPayDate(order.getPayDate());
+			orderView.setOrderCode(order.getOrderCode());
+			orderView.setAddressId(order.getAddressId());
+			orderView.setPayStat(order.getPayStat());
+			orderView.setTotalPrice(order.getTotalPrice());
+			orderView.setCreateDate(order.getCreateDate());
+//			if (orderSKUService.list(orderSKUConditionView).size() == 0) {
+//				continue;
+//			}
+			orderView.setListOrderSKU(orderSKUService.list(orderSKUConditionView));
+			listOrderView.add(orderView);
+		}
+		System.out.println(listOrderView);
+		return listOrderView;
+	}
+
+}

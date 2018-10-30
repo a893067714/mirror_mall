@@ -1,0 +1,64 @@
+package com.iwonder.tea.front.action;
+
+import java.io.IOException;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.iwonder.tea.bas.view.BrandConditionView;
+import com.iwonder.tea.framework.action.BaseServlet;
+import com.iwonder.tea.framework.service.ProxyServiceFactory;
+import com.iwonder.tea.framework.util.StringUtil;
+import com.iwonder.tea.framework.web.SessionManager;
+import com.iwonder.tea.usr.entity.UserInfo;
+import com.iwonder.tea.usr.service.IUserInfoService;
+import com.iwonder.tea.usr.service.imp.UserInfoServiceImp;
+
+@WebServlet("/InformationServlet.do")
+public class InformationServlet extends BaseServlet {
+	private static final long serialVersionUID = 1L;
+	
+	private IUserInfoService iUserInfoService = (IUserInfoService) ProxyServiceFactory
+			.getProxyService(UserInfoServiceImp.class);
+
+	public InformationServlet() {
+		super();
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		super.doGet(request, response);
+	}
+	
+	public void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		UserInfo listUserInfo=iUserInfoService.load(SessionManager.getCurrentUser().getUserId());
+		request.setAttribute("listUserInfo", listUserInfo);
+		System.out.println("查询操作");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		request.getRequestDispatcher("/WEB-INF/jsp/front/information.jsp").forward(request, response);
+	}
+	
+	public void save(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userId=request.getParameter("userId");
+		String nickName = request.getParameter("nickName");
+		String name = request.getParameter("name");
+		String birthday=request.getParameter("birthday");
+		String mail = request.getParameter("mail");
+		System.out.println("执行保存操作");
+		UserInfo u = new UserInfo();
+		u.setUserId(userId);
+		u.setNickName(nickName);
+		Date date = StringUtil.parseDate(birthday);
+		u.setBirthday(date);
+		u.setName(name);
+		u.setEmail(mail);
+		iUserInfoService.update(u);
+		response.sendRedirect("InformationServlet.do?method=list");
+	}
+
+}

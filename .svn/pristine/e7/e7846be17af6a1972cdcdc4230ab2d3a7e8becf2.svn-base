@@ -1,0 +1,25 @@
+package test.service;
+
+import org.junit.Test;
+
+import com.iwonder.tea.bas.service.ITypeBigService;
+import com.iwonder.tea.bas.service.imp.TypeBigServiceImp;
+import com.iwonder.tea.framework.service.ProxyServiceFactory;
+import com.iwonder.tea.ord.service.IOrderService;
+import com.iwonder.tea.ord.service.imp.OrderServiceImp;
+
+/**
+ * @author mirror
+ * @version 创建时间：2018年9月25日 下午7:16:59
+ * 
+ */
+public class OrderViewServiceTest {
+	@Test
+	public void list() {
+
+		// 动态代理
+		IOrderService orderService = (IOrderService) ProxyServiceFactory.getProxyService(OrderServiceImp.class);
+
+		orderService.listView();
+	}
+}

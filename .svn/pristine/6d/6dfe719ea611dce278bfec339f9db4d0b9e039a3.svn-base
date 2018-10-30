@@ -1,0 +1,166 @@
+
+*{
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	font-family: verdana;
+	font-size: 12px;
+	overflow-x: hidden;
+}
+
+ul {
+	list-style: none;
+}
+.header {
+	background: #EAEAEA;
+	height: 30px;
+}
+
+.header_nav_left {
+	float: left;
+	height: 20px;
+	width: 250px;
+}
+
+.header_nav_right {
+	float: right;
+	height: 20px;
+	width: 800px;
+}
+
+.header_nav {
+	width: 1210px;
+	margin: 0px auto;
+	padding-top: 5px;
+}
+
+.header ul li {
+	float: left;
+	margin: 0px 8px;
+	color: #999999;
+}
+
+.header_nav a:hover {
+	color: #FF3E1F;
+}
+/*我的京东 */
+.wdjd_list>li{
+	float: left;
+	font-size:17px;
+	top:27px;
+	margin-left:30px;
+}
+.xiaobai{
+	color:#FFFFFF;
+	border: 1px solid #FFFFFF;
+	width:90px;
+	height: 25px;
+	float:left;	
+}
+.xiaobai:hover{
+	color:#CB1683;
+	background: #FFFFFF;
+}
+.benifit>li{
+	float:left;
+	width:145px;
+	height:40px;
+
+}
+.shfw{
+	left:8px;
+}
+.shfw>li{
+	float:left;
+	width:80px;
+	height:80px;
+	margin-right:13px;
+
+	color:#9B8066
+}
+
+
+
+
+.clearfix:after{
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;	
+	
+	
+}
+
+
+
+
+
+/********************************尾部***********************************/
+.tail {
+	background: #EAEAEA;
+	height: 525px;
+	font-size: 12px;
+}
+.tail_ad {
+	height: 100px;
+	width: 1210px;
+	margin: 0 auto;
+}
+.tail_ad_img{
+	margin-top: 30px;margin-left: 50px;
+}
+
+.tail_tools {
+	height: 200px;
+	width: 1210px;
+	margin: 0px auto;
+}
+
+.tail_tools ul li{
+	font-weight: 700px;
+    color: #777;
+    font-size: 14px;
+}
+.tail_tools a{
+	font-weight: lighter;
+	font-size: 12px;
+    color: #666;
+    line-height: 22px;
+}
+.tail_tools>div{
+	float: left;margin-left:80px;margin-right: 95px;margin-top:25px ;
+}
+.tail_tools a:hover{
+	color:#f30213 ;
+}
+.tail_reg {
+	height: 210px;
+	width: 1210px;
+	margin: 0 auto;
+}
+.tail_reg span{
+	color: #cccccc;
+}
+.tail_reg ul li{
+	color: #999999;
+	float: left;margin-left: 14px;
+}
+.tail_reg ul li a:hover{
+	color: #f30213;
+}
+.tail_solid{
+	border-top: 1px solid #C6C6C6;
+}
+.tail_font_type1{
+	margin-top: 10px;	
+}
+.tail_font_type1 a{
+	color: #666666;
+}
+.tail_font_type2{
+	color: #999999;
+}

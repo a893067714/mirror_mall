@@ -1,0 +1,143 @@
+/*******************************头部分**********************************/
+.header{
+	width:1210px;
+	height:120px;
+	margin: 0 auto;
+	
+}
+.header span{
+	font-size: 16px;
+	font-family:  微软雅黑;
+	color: #999999;
+}
+.header>span{
+	top: 10px;
+	left: 20px;
+	font-size: 24px;
+	font-family:  微软雅黑;
+	color:#333333;
+	
+}
+.header div{
+	position: absolute;
+	right: 0px;
+	bottom: 20px;
+}
+.header img{
+	top: 16px;
+	display: inline-block;
+}
+.header a{
+	font-size: 16px;
+	color: #e22;
+	
+}
+.header a:hover{
+	color: #C81623;
+	text-decoration: underline;
+}
+/*******************************底部**********************************/
+.footer{
+	box-shadow: 0 0 50px #F2F2F2 inset;
+	height: 800px;
+}
+.footer-reg{
+	top:100px;
+	width:500px;
+	height:400px;
+	margin: 0 auto;
+	
+}
+.footer-reg span{
+	font-size: 18px;
+	display: inline-block;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	color: #777777;
+}
+.footer-reg-id{
+	top:90px;
+	height:50px;
+	width: 330px;
+	margin: 0 auto;
+	border: 1px solid #CCCCCC;
+}
+.footer-reg-id-header{
+	top:3px;
+	left: 35px;
+	right: 30px;
+}
+.footer-reg-id-pwd{
+	top:3px;
+	left:35px;
+	right: 30px;
+}
+.footer-reg-id-input{
+	left: 35px;
+}
+.footer-reg-pwd-input{
+	left: 35px;
+}
+.footer-reg-id-repwd{
+	top:3px;
+	left: 20px;
+	right: 30px;
+}
+.footer-reg-pwd{
+	top:100px;
+	height:50px;
+	width: 330px;
+	margin: 0 auto;
+	border: 1px solid #CCCCCC;
+}
+.footer-reg-submit{
+	top:130px;
+	height:40px;
+	width: 330px;
+	margin: 0 auto;
+}
+
+.textbox{
+	height: 50px;
+	border:none;
+	outline: none;
+	font-size: 14px;
+	width: 150px;
+	left: 20px;
+	border-left: 1px solid #CCCCCC;
+	padding-left: 10px;
+}
+.submit{
+	width: 120px;
+	height: 40px;
+	cursor: pointer;
+	font-size: 18px;
+	left: 110px;
+}
+/*************导航************/
+.footer-bottom{
+	top:100px;
+	margin: 0 auto;
+	width: 1210px;
+	border-top:1px solid #CCCCCC
+}
+.footer-nav{
+	top:30px;
+	height: 20px;
+	width: 900px;
+	margin: 0 auto;
+	color: #999999;
+	
+}
+.footer-nav a{
+	margin: 10px;
+}
+.copyright
+{
+	top:60px;
+	height: 20px;
+	width:270px;
+	margin: 0 auto;
+	color: #999999;
+}

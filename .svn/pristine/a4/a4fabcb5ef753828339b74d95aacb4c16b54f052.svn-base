@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>6组导航页</title>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/admin/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/admin/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/admin/css/fullcalendar.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/admin/css/matrix-style.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/admin/css/matrix-media.css" />
+<link
+	href="<%=request.getContextPath()%>/resource/admin/font-awesome/css/font-awesome.css"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/admin/css/jquery.gritter.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/admin/css/fonts-googleapis.css" />
+</head>
+<body>
+	<%@ include file="/WEB-INF/jsp/admin/sidebar.jsp"%>
+	<!--top-Header-menu-->
+	<div id="content">
+		<div class="container-fluid">
+			<h3>前台</h3>
+			<a href="IndexServlet.do" target="_blank">首页</a> <a
+				href="SearchServlet.do" target="_blank">搜索页</a> <a
+				href="DetailsServlet.do" target="_blank">物品详情 </a> <a
+				href="OrderServlet.do" target="_blank">订单 </a><a
+				href="InformationServlet.do" target="_blank">个人信息 </a><a
+				href="AddressServlet.do" target="_blank">收货地址</a> 
+				<a href="AddCartServlet.do">购物车</a>
+				<br> <a
+				href="RegServlet.do" target="_blank">注册页</a> <a
+				href="LoginServlet.do" target="_blank">登录页</a> <a
+				href="CommunityServlet.do" target="_blank">社区</a> <a
+				href="EvaluateServlet.do" target="_blank">评价页面</a> <a
+				href="MessageServlet.do" target="_blank">消息通知</a><a
+				href="PayServlet.do" target="_blank">支付页面</a> <a
+				href="ReadyServlet.do" target="_blank">预付款</a> <a
+				href="SecurityServlet.do" target="_blank">账户安全</a> <a
+				href="UserBindServlet.do" target="_blank">账号绑定</a> <a
+				href="UserCenterServlet.do" target="_blank">用户中心</a> <a
+				href="BalanceServlet.do" target="_blank">结算页面</a> <a
+				href="CartServlet.do" target="_blank">购物车</a>
+
+			<hr>
+			<h3>后台</h3>
+			ql: <a href="admin/product/ProductServlet.do" target="_blank">产品页面</a>
+			<a href="admin/product/ProductSkuServlet.do" target="_blank">产品SKU页面</a>
+			<a href="admin/bas/ColorServlet.do" target="_blank">颜色页面</a> <a
+				href="admin/bas/SizeServlet.do" target="_blank">尺码页面</a> <a
+				href="admin/bas/TypeBigServlet.do" target="_blank">大分类页面</a> <a
+				href="admin/bas/TypeDetailServlet.do" target="_blank">详细分类页面</a> <a
+				href="admin/bas/BrandServlet.do" target="_blank">品牌页面</a> <br>
+			yxy: <a href="admin/order/AdminOrderServlet.do" target="_blank">订单页面</a>
+			<a href="admin/order/AdminOrderSKUServlet.do" target="_blank">订单SKU页面</a>
+			<br> dhq: <a href="admin/cart/CartxServlet.do" target="_blank">购物车页面</a>
+			<br> cwq: <a href="admin/usr/UserInfoServlet.do" target="_blank">用户信息页面</a>
+			<a href="admin/usr/AddressInfoServlet.do" target="_blank">用户地址页面</a>
+			<a href="admin/usr/EvaluatServlet.do" target="_blank">用户评价页面</a> <br>hzw:
+			<a href="admin/sys/StaffServlet.do" target="_blank">员工页面</a> <a
+				href="admin/sys/StaffRoleServlet.do" target="_blank">员工角色页面</a> <a
+				href="admin/sys/RoleServlet.do" target="_blank">角色页面</a> <a
+				href="admin/sys/RoleMenuServlet.do" target="_blank">角色菜单页面</a> <a
+				href="admin/sys/ModuleServlet.do" target="_blank">模块页面</a> <a
+				href="admin/sys/MenuServlet.do" target="_blank">菜单页面</a> <br>cjz:
+			<a href="admin/dictionary/DictionaryServlet.do" target="_blank">数据字典页面</a>
+			<a href="admin/dictionary/DictionarySKUServlet.do" target="_blank">数据字典SKU页面</a>
+			<a href="admin/lib/WarehouseServlet.do" target="_blank">入库页面</a> <a
+				href="admin/lib/WarehouseSKUServlet.do" target="_blank">入库SKU页面</a>
+
+			<hr>
+
+		</div>
+	</div>
+
+</body>
+</html>

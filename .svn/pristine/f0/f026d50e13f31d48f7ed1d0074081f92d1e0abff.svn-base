@@ -1,0 +1,406 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>购物车结算</title>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resource/front/css/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resource/front/css/cart2/cart2.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/resource/front/iconfont/iconfont.css" />
+</head>
+<body>
+
+	<div class="all">
+		<!--header-->
+		<%@include file="bas_header.jsp"%>
+
+		<!--middle-->
+		<div class="body_wrap clearfix">
+			<!--
+            	作者：offline
+            	时间：2018-08-11
+            	描述：search
+            -->
+			<div class="wrap_header">
+				<div class="wheader_logo">
+					<a href="" class="wheader_logo_link1"> <img
+						src="<%=request.getContextPath()%><%=request.getContextPath()%>/resource/front/img/shoppingcar_jdlogo.jpg"
+						alt="" width="134px" height="42px" />
+					</a> <a href="" class="wheader_logo_link2"> 购物车 </a>
+				</div>
+				<div class="wheader_search">
+					<input type="text" class="wheader_search_text"> </input> <input
+						type="button" class="wheader_search_btn" value="搜索 "> </input>
+				</div>
+				<div class="clear_both"></div>
+			</div>
+
+			<!--  列表上 -->
+			<div id="uplist">
+				<div class="uplist_left">
+					<span>全部商品 </span> <span>25</span>
+				</div>
+				<div class="uplist_left uplist_jddyf">
+					<span>京东大药房 </span>
+				</div>
+				<div id="uplist_right">
+					<span> 配送至： </span>
+					<div class="uplist_adress">北京朝阳区三环以内</div>
+				</div>
+				<div class="clear_both"></div>
+			</div>
+
+			<!--
+                	作者：offline
+                	时间：2018-08-11
+                	描述：购物车
+                -->
+			<div class="car_thead">
+
+				<div class="car_checkall ">
+					<input type="checkbox" class="car_checkbox"> </input> 全选
+				</div>
+				<div class="car_goods ">商品</div>
+				<div class="car_props"></div>
+				<div class="car_price">单价</div>
+				<div class="car_quantity">数量</div>
+				<div class="car_sum">小计</div>
+				<div class="car_action">操作</div>
+				<div class="clear_both"></div>
+
+			</div>
+
+			<!--
+                	作者：offline
+                	时间：2018-08-11
+                	描述：店铺商品
+                -->
+			<form action="UpdateCartServlet.do?method=settlement" method="post">
+				<div class="car_list">
+					<div class="shop_wrap">
+						<c:forEach items="${arr1}" var="arr">
+							<div class="shop">
+								<div class="div_shop_checked">
+									<input type="checkbox" class="car_checkbox"> </input>
+								</div>
+								<span class="shop_txt"> 宸极旗舰店 </span>
+								<div class="clear_both"></div>
+
+							</div>
+							<div class="shop_body">
+
+								<input type="checkbox" class="s_checkbox" name="productSkuId"
+									value="${arr.productSkuId }" />
+								<div class="item_form">
+									<div class="shop_goods">
+
+										<div class="shop_goods_img">
+											<img src="<%=request.getContextPath()%>${arr.picSmall}">
+										</div>
+										<div class="p_name">${arr.name}</div>
+										<span class="promise extend_return_d"> <i></i> <a
+											href="" class="">支持七天无理由退货</a> <input type="hidden"
+											name="cartId" value="${arr.cartId }"/ > <input
+											type="hidden" name="name" value="${arr.name }"/ > <input
+											type="hidden" name="priceCurrent"
+											value="${arr.priceCurrent }"/ >
+										</span> <span class="promise extend_service"> <i></i> <a
+											href="" class="">选服务</a>
+
+										</span>
+										<div class="clear_both"></div>
+									</div>
+									<div class="shop_props">
+										<div>颜色：${arr.colorValue}</div>
+										<div>尺码：${arr.sizeValue}</div>
+									</div>
+									<div class="shop_price">
+										<strong>${arr.priceCurrent}</strong>
+									</div>
+									<div class="shop_quantity">
+										<div class="shop_quantity_form">
+
+											<a href="UpdateCartServlet.do?method=updateQuantity&m=sup&cartId=${arr.cartId}&quantity=${arr.quantity}" > - </a> 
+											<input type="text" name="quantity" value="${arr.quantity}" style="width:35px;">								
+
+											<a href="UpdateCartServlet.do?method=updateQuantity&m=add&cartId=${arr.cartId}&quantity=${arr.quantity}" > + </a>
+
+										</div>
+
+									</div>
+
+									<div class="shop_num">
+										<strong>${arr.priceCurrent}</strong>
+									</div>
+									<div class="shop_ops">
+										<a
+											href="UpdateCartServlet.do?method=delCart&cartId=${arr.cartId}">删除</a>
+										<a href="">移到我的关注</a> <a href="">加到我的关注</a>
+									</div>
+								</div>
+
+								<div class="clear_both"></div>
+							</div>
+						</c:forEach>
+
+
+
+					</div>
+
+				</div>
+				<p style="color: red; margin-left: 850px;">${msg }</p>
+				<!--
+                	作者：offline
+                	时间：2018-08-11
+                	描述：商品底部列表
+                -->
+
+				<div class="car_footer">
+
+					<div class="car_footer_checkall car_footer_left car_checkall">
+						<input type="checkbox" name="" id="" value="" class="car_checkbox" />
+						全选
+					</div>
+					<div class=" car_footer_left">删除选中的商品</div>
+					<div class=" car_footer_left">移到我的关注</div>
+					<div class="car_footer_clear car_footer_left">清理购物车</div>
+					<div class="car_footer_submit car_footer_right">
+						<input type="submit" value="去结算" />
+						<!-- <a href="BalanceServlet.do"></a> -->
+					</div>
+					<div class="car_footer_price car_footer_right">
+						<span class="car_footer_price1"> 总价: </span> <span
+							class="car_footer_price_num"> ¥71.60 </span> <br /> <span>
+							已节省: </span> <span> -¥0.00 </span>
+					</div>
+					<div class="car_footer_checkedsum car_footer_right">
+						已选 <span> 2 </span> 件商品
+					</div>
+					<div class="clear_both"></div>
+
+				</div>
+			</form>
+			<!--
+                	作者：offline
+                	时间：2018-08-11
+                	描述：列表
+                -->
+			<div class="car_smart_main">
+				<h3>购物车帮你选</h3>
+				<p>看看加购过该商品的人还喜欢哪些</p>
+				<div class="car_smart_cont clearfix">
+					<div class="car_smart_product_wrap">
+						<div class="car_smart_item_main clearfix">
+							<div class="car_smart_pic1">
+								<img
+									src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+									width="48px" height="48px" />
+							</div>
+							<div class="car_smart_detail">
+								<p>华为荣耀路由2 有线无线双千兆 光纤宽带智能无线路由器 双网双通 双频优选 网口盲插 小白兔</p>
+								<p>荣耀路由2</p>
+								<p class="car_smart_detail_price">¥196.00</p>
+							</div>
+						</div>
+						<div class="car_smart_items clearfix">
+							<ul>
+								<li class="car_smart_li">
+									<div class="car_smart_pic2">
+										<img
+											src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+											width="150px" height="150px" />
+									</div>
+									<div class="car_smart_item_name">水星（MERCURY）幻影路由D128
+										1200M无线路由器 稳定穿墙智能双频</div>
+									<div class="car_smart_item_price">¥129.00</div>
+									<div class="car_smart_itemmt">16175人已购买</div>
+								</li>
+								<li class="car_smart_li">
+									<div class="car_smart_pic2">
+										<img
+											src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+											width="150px" height="150px" />
+									</div>
+									<div class="car_smart_item_name">水星（MERCURY）幻影路由D128
+										1200M无线路由器 稳定穿墙智能双频</div>
+									<div class="car_smart_item_price">¥129.00</div>
+									<div class="car_smart_itemmt">16175人已购买</div>
+								</li>
+								<li class="car_smart_li">
+									<div class="car_smart_pic2">
+										<img
+											src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+											width="150px" height="150px" />
+									</div>
+									<div class="car_smart_item_name">水星（MERCURY）幻影路由D128
+										1200M无线路由器 稳定穿墙智能双频</div>
+									<div class="car_smart_item_price">¥129.00</div>
+									<div class="car_smart_itemmt">16175人已购买</div>
+								</li>
+								<li class="car_smart_li">
+									<div class="car_smart_pic2">
+										<img
+											src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+											width="150px" height="150px" />
+									</div>
+									<div class="car_smart_item_name">水星（MERCURY）幻影路由D128
+										1200M无线路由器 稳定穿墙智能双频</div>
+									<div class="car_smart_item_price">¥129.00</div>
+									<div class="car_smart_itemmt">16175人已购买</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="car_smart_product_wrap">
+						<div class="car_smart_item_main clearfix">
+							<div class="car_smart_pic1">
+								<img
+									src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+									width="48px" height="48px" />
+							</div>
+							<div class="car_smart_detail">
+								<p>华为荣耀路由2 有线无线双千兆 光纤宽带智能无线路由器 双网双通 双频优选 网口盲插 小白兔</p>
+								<p>荣耀路由2</p>
+								<p class="car_smart_detail_price">¥196.00</p>
+							</div>
+						</div>
+						<div class="car_smart_items clearfix">
+							<ul>
+								<li class="car_smart_li">
+									<div class="car_smart_pic2">
+										<img
+											src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+											width="150px" height="150px" />
+									</div>
+									<div class="car_smart_item_name">水星（MERCURY）幻影路由D128
+										1200M无线路由器 稳定穿墙智能双频</div>
+									<div class="car_smart_item_price">¥129.00</div>
+									<div class="car_smart_itemmt">16175人已购买</div>
+								</li>
+								<li class="car_smart_li">
+									<div class="car_smart_pic2">
+										<img
+											src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+											width="150px" height="150px" />
+									</div>
+									<div class="car_smart_item_name">水星（MERCURY）幻影路由D128
+										1200M无线路由器 稳定穿墙智能双频</div>
+									<div class="car_smart_item_price">¥129.00</div>
+									<div class="car_smart_itemmt">16175人已购买</div>
+								</li>
+								<li class="car_smart_li">
+									<div class="car_smart_pic2">
+										<img
+											src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+											width="150px" height="150px" />
+									</div>
+									<div class="car_smart_item_name">水星（MERCURY）幻影路由D128
+										1200M无线路由器 稳定穿墙智能双频</div>
+									<div class="car_smart_item_price">¥129.00</div>
+									<div class="car_smart_itemmt">16175人已购买</div>
+								</li>
+								<li class="car_smart_li">
+									<div class="car_smart_pic2">
+										<img
+											src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+											width="150px" height="150px" />
+									</div>
+									<div class="car_smart_item_name">水星（MERCURY）幻影路由D128
+										1200M无线路由器 稳定穿墙智能双频</div>
+									<div class="car_smart_item_price">¥129.00</div>
+									<div class="car_smart_itemmt">16175人已购买</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!--
+                	作者：offline
+                	时间：2018-08-11
+                	描述：
+                -->
+			<div class="car_tuijian">
+				<div class="mt clearfix">
+					<a href="" class="mt_a curr">猜你喜欢</a> <a href="" class="mt_a">随手购</a>
+					<a href="" class="mt_a">我的关注</a>
+				</div>
+				<ul class="clearfix">
+					<li class="tabs_new">
+						<div class="tabs_item">
+							<div class="tabs_item_img">
+								<img
+									src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+									width="160" height="160" />
+							</div>
+							<div class="tabs_item_name">netLINK 光纤收发器
+								htb-gs-03/20km千兆单模双纤光电转换器外电 一对价</div>
+							<div class="tabs_item_price">￥296.00</div>
+							<div class="tabs_item_btn">
+								<a href="">加入购物车</a>
+							</div>
+						</div>
+					</li>
+					<li class="tabs_new">
+						<div class="tabs_item">
+							<div class="tabs_item_img">
+								<img
+									src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+									width="160" height="160" />
+							</div>
+							<div class="tabs_item_name">netLINK 光纤收发器
+								htb-gs-03/20km千兆单模双纤光电转换器外电 一对价</div>
+							<div class="tabs_item_price">￥296.00</div>
+							<div class="tabs_item_btn">
+								<a href="">加入购物车</a>
+							</div>
+						</div>
+					</li>
+					<li class="tabs_new">
+						<div class="tabs_item">
+							<div class="tabs_item_img">
+								<img
+									src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+									width="160" height="160" />
+							</div>
+							<div class="tabs_item_name">netLINK 光纤收发器
+								htb-gs-03/20km千兆单模双纤光电转换器外电 一对价</div>
+							<div class="tabs_item_price">￥296.00</div>
+							<div class="tabs_item_btn">
+								<a href="">加入购物车</a>
+							</div>
+						</div>
+					</li>
+					<li class="tabs_new">
+						<div class="tabs_item">
+							<div class="tabs_item_img">
+								<img
+									src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg"
+									width="160" height="160" />
+							</div>
+							<div class="tabs_item_name">netLINK 光纤收发器
+								htb-gs-03/20km千兆单模双纤光电转换器外电 一对价</div>
+							<div class="tabs_item_price">￥296.00</div>
+							<div class="tabs_item_btn">
+								<a href="">加入购物车</a>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+
+			</div>
+		</div>
+
+		<!--尾部-->
+		<%@include file="bas_bottom.jsp"%>
+	</div>
+</body>
+</html>

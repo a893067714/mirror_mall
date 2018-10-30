@@ -1,0 +1,326 @@
+
+*{	
+margin:0;
+padding:0;
+text-decoration: none;
+
+}
+a:link{
+	color:#666666
+}
+a:visited{
+	color:#666666
+	
+}
+a:hover{
+	color:#F30213;
+}
+ul{
+	list-style: none;
+}
+div
+{
+	position:relative;
+	}
+
+	.header{
+	background: #EAEAEA;height: 30px;
+	font-size: 12px;
+}
+.header_nav_left{
+	float:left;height:20px;width:250px;
+}
+.header_nav_right{
+	float: right;height:20px;width:730px;
+}
+.header_nav{
+	width:1210px;margin:0px auto;padding-top: 5px;
+}
+.header ul li{
+	float:left;margin: 0px 8px;
+	color:#999999;
+}
+.header_nav a:hover{
+	color: #FF3E1F;
+}
+
+	
+	
+.spjx4{
+float:left;
+list-style:none;
+}	
+	
+.jdnz{
+left:1000;
+height:35;	
+}
+.jdnz>li{
+float:left;
+margin-left:3px;
+font-size: 12px;
+color:#999999;
+list-style:none;
+height:20;
+} 
+
+.jdnz a:visited{
+	color:#999999;
+}
+.jdnz a:hover{
+	color:#FF4FA7;
+}
+.pinpai{	
+}
+.pinpai>a>li{
+float:left;	
+width:116;
+height:48;
+border:1px solid #DDDDDD;	
+list-style:none;	
+}
+.gjxx>li{
+	height:25;
+margin-left:15;
+	float:left;
+list-style:none;
+		
+}
+.spjx>li{
+height:280;
+list-style:none;
+	
+}
+.shangyi>li{
+height:25;
+width:55;
+float:left;	
+border:1px solid #ff00ff;
+list-style:none;		
+}
+.shangsan>li{
+width:220;
+height:500;
+margin-left:15px;
+float:left;	
+
+margin-bottom:80px;
+margin-top:15px;
+list-style:none;
+}
+.spjx2>li{
+
+height:28;
+float:left;	
+
+list-style:none;
+font-size:12px;
+margin-left:10px
+	
+}
+.gywm>li{
+width:48;
+height:14;
+float:left;	
+border:1px solid #ff00ff;
+list-style:none;
+}
+
+
+.gywm2>li{
+width:103;
+height:32;
+float:left;	
+border:1px solid #ff00ff;
+list-style:none;
+}
+.kdu2>li{
+height:20;
+width:55;
+float:left;	
+border:1px solid #999999;
+list-style:none;
+
+}
+
+.qbspfl>li{
+width:72;
+height:33;
+float:left;
+
+list-style:none;
+}
+
+
+.qbsp_1>li{
+width:170;
+height:20;
+border:1px solid #ff00ff;
+list-style:none;	
+display: none;		
+}
+
+.qbsp:hover .qbsp_1 li{
+	
+	display: block;
+	
+}
+
+.beijing1{
+	
+
+border:1px solid #ff00ff;
+
+display: none;	
+}
+.beijing:hover .beijing1{
+	display: block;
+	
+}
+.beijing_list>li{
+width:50;
+height:25;
+margin: 1 ;
+float:left;
+border:1px solid #ff00ff;
+list-style:none;	
+	
+	
+}
+.nz>a>li{
+width:120;
+height:30;
+
+float:left;
+
+list-style:none;
+}
+.cm>a>li{
+width:60;
+height:30;
+float:left;
+list-style:none;
+		
+}
+
+.ys>a>li{
+width:20;
+height:20;
+float:left;
+list-style:none;
+margin-left:10;	
+}
+.peisong>li{
+float:left;
+list-style:none;		
+}
+.fengye>li{
+width:36;
+height:36;
+float:left;
+list-style:none;
+margin-left:5px;
+border: 1px solid #DDDDDD;	
+}
+.qbsp a:visited{
+	color:#FFFFFF
+}
+
+.dakuang1,.dakuang2,.dakuang3,.dakuang4,.dakuang5,.dakuang6,.dakuang7,.dakuang8,.dakuang9,.dakuang10
+,.dakuang11,.dakuang12,.dakuang13,.dakuang14,.dakuang15,.dakuang16,.dakuang17{
+	display:none;
+	
+}
+.liebiao1:hover .dakuang1,.liebiao2:hover .dakuang2,.liebiao3:hover .dakuang3,.liebiao4:hover .dakuang4,
+.liebiao5:hover .dakuang5,.liebiao6:hover .dakuang6,.liebiao7:hover .dakuang7,.liebiao8:hover .dakuang8,
+.liebiao9:hover .dakuang9,.liebiao10:hover .dakuang10,.liebiao11:hover .dakuang11,.liebiao12:hover .dakuang12,
+.liebiao13:hover .dakuang13,.liebiao14:hover .dakuang14,.liebiao15:hover .dakuang15,.liebiao16:hover .dakuang16,
+.liebiao17:hover .dakuang17{
+	display:block;
+}
+
+
+
+
+
+.clearfix:after{
+	content:'.';
+	display:block;
+	clear: both;
+	visibility: hidden;	
+	height:0;
+}
+/********************************尾部***********************************/
+.tail {
+	background: #EAEAEA;
+	height: 525px;
+	font-size: 12px;
+}
+.tail_ad {
+	height: 100px;
+	width: 1210px;
+	margin: 0 auto;
+}
+.tail_ad_img{
+	margin-top: 30px;margin-left: 50px;
+}
+
+.tail_tools {
+	height: 200px;
+	width: 1210;
+	margin: 0px auto;
+}
+
+.tail_tools ul li{
+	font-weight: 700;
+    color: #777;
+    font-size: 14px;
+}
+.tail_tools a{
+	font-weight: lighter;
+	font-size: 12px;
+    color: #666;
+    line-height: 22px;
+}
+.tail_tools>div{
+	float: left;margin-left:80px;margin-right: 95px;margin-top:25px ;
+}
+.tail_tools a:hover{
+	color:f30213 ;
+}
+.tail_reg {
+	height: 210px;
+	width: 1210;
+	margin: 0 auto;
+}
+.tail_reg span{
+	color: #cccccc;
+}
+.tail_reg ul li{
+	color: #999999;
+	float: left;margin-left: 14px;
+}
+.tail_reg ul li a:hover{
+	color: #f30213;
+}
+.tail_solid{
+	border-top: 1px solid #C6C6C6;
+}
+.tail_font_type1{
+	margin-top: 10px;	
+}
+.tail_font_type1 a{
+	color: #666666;
+}
+.tail_font_type2{
+	color: #999999;
+}
+
+.npx>li{
+	list-style: none;
+	width:30;
+	height:30;
+	margin-top:2px;
+	background: #7A6E6E;
+	
+}

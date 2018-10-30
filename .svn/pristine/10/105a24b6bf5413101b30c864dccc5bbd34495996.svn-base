@@ -1,0 +1,820 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>购物车结算</title>
+		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/front/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/front/css/cart2/cart2.css"/>
+		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/front/iconfont/iconfont.css"/>
+	</head>
+	<body>
+		
+		<div class="all">
+			<!--header-->
+			<div class="header">
+				<div class="header_nav">
+					<div class="header_nav_left">
+						<a href="index.html">
+							<i class="icon iconfont icon-shouye"></i>
+							京东首页
+						</a>
+						<a href="#">
+							<i class="icon iconfont icon-dizhiguanli"></i>
+							定位
+						</a>
+					</div>
+					<div class="header_nav_right">
+						<ul>
+							<li>
+								<a href="login.html">你好，请登录</a>
+							</li>
+							<li>
+								<a href="reg.html" style="color:#FF3E1F;">免费注册</a>
+							</li>
+							<li>
+								<a href="#">我的订单</a>
+							</li>
+							<li>|</li>
+							<li>
+								
+								<a href="#">我的京东</a>
+							</li>
+							<li>|</li>
+							<li>
+								<a href="#">京东会员</a>
+							</li>
+							<li>|</li>
+							<li>
+								<a href="#">企业采购</a>
+							</li>
+							<li>|</li>
+							<li>
+								<a href="#">客户服务</a>
+							</li>
+							<li>|</li>
+							<li>
+								<a href="#">网站导航</a>
+							</li>
+							<li>|</li>
+							<li>
+								<a href="#">手机京东</a>
+							</li>
+						</ul>
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+			</div>
+		
+			<!--middle-->
+			<div class="body_wrap clearfix">
+			<!--
+            	作者：offline
+            	时间：2018-08-11
+            	描述：search
+            -->
+				<div class="wrap_header">
+					<div class="wheader_logo">
+						<a href="" class="wheader_logo_link1">
+							<img src="<%=request.getContextPath()%><%=request.getContextPath()%>/resource/front/img/shoppingcar_jdlogo.jpg" alt="" width="134px" height="42px" />
+						</a>
+						<a href="" class="wheader_logo_link2">
+							购物车
+						</a>
+					</div>
+					<div class="wheader_search">
+						<input type="text" class="wheader_search_text"> </input>
+						<input type="button" class="wheader_search_btn" value="搜索 "> </input>
+					</div>
+				<div class="clear_both"></div>
+				</div>
+
+				<!--  列表上 -->
+				<div id="uplist">
+					<div class="uplist_left">
+						<span>全部商品  </span>
+						<span>25</span>
+					</div>
+					<div class="uplist_left uplist_jddyf">
+						<span>京东大药房 </span>
+					</div>
+					<div id="uplist_right">
+						<span>
+						配送至：
+					</span>
+						<div class="uplist_adress">
+							北京朝阳区三环以内
+						</div>
+					</div>
+					<div class="clear_both"></div>
+				</div>
+
+				<!--
+                	作者：offline
+                	时间：2018-08-11
+                	描述：购物车
+                -->
+				<div class="car_thead">
+	
+					<div class="car_checkall ">
+						<input type="checkbox" class="car_checkbox"> </input>
+						全选
+					</div>
+					<div class="car_goods ">
+						商品
+					</div>
+					<div class="car_props">
+	
+					</div>
+					<div class="car_price">
+						单价
+					</div>
+					<div class="car_quantity">
+						数量
+					</div>
+					<div class="car_sum">
+						小计
+					</div>
+					<div class="car_action">
+						操作
+					</div>
+					<div class="clear_both"></div>
+	
+				</div>
+
+				<!--
+                	作者：offline
+                	时间：2018-08-11
+                	描述：店铺商品
+                -->
+	
+				<div class="car_list">
+					<div class="shop_wrap">
+					<c:forEach items="${arr1}" var="arr">
+						<div class="shop">
+							<div class="div_shop_checked">
+								<input type="checkbox" class="car_checkbox"> </input>
+							</div>
+							<span class="shop_txt">
+							宸极旗舰店
+							</span>
+							<div class="clear_both"></div>
+	
+						</div>
+						<div class="shop_body">
+						
+						<input type="checkbox" class="s_checkbox" />
+						<div class="item_form">
+								<div class="shop_goods">
+	
+									<div class="shop_goods_img">
+										<img  src="<%=request.getContextPath()%>${arr.picSmall}">
+									</div>
+									<div class="p_name">
+										${arr.name}
+									</div>
+									<span class="promise extend_return_d">
+									<i></i>
+									<a href="" class="">支持七天无理由退货</a>
+									
+									</span>
+									<span class="promise extend_service">
+									<i></i>
+									<a href="" class="">选服务</a>
+									
+									</span>
+									<div class="clear_both"></div>
+								</div>
+								<div class="shop_props">
+									<div>颜色：${arr.colorValue}</div>
+									<div>尺码：${arr.sizeValue}</div>
+								</div>
+								<div class="shop_price">
+									<strong>${arr.priceCurrent}</strong>
+								</div>
+								<div class="shop_quantity">
+									<div class="shop_quantity_form">
+										<span class="shop_quantity_edit">
+										-
+									</span>
+										<span class="shop_quantity_edit shop_quantity_edit_add">
+										+
+									</span>
+										<input type="text" class="shop_quantity_text" />
+	
+									</div>
+	
+								</div>
+	
+								<div class="shop_num">
+									<strong>¥125.00</strong>
+								</div>
+								<div class="shop_ops">
+									<a href="">删除</a>
+									<a href="">移到我的关注</a>
+									<a href="">加到我的关注</a>
+								</div>
+							</div>
+	
+							<div class="clear_both"></div>
+						</div>
+						</c:forEach>
+	
+							
+	
+					</div>
+
+				</div>
+				
+				<!--
+                	作者：offline
+                	时间：2018-08-11
+                	描述：商品底部列表
+                -->
+                
+				<div class="car_footer">
+	
+					<div class="car_footer_checkall car_footer_left car_checkall">
+						<input type="checkbox" name="" id="" value="" class="car_checkbox" /> 全选
+					</div>
+					<div class=" car_footer_left">
+						删除选中的商品
+					</div>
+					<div class=" car_footer_left">
+						移到我的关注
+					</div>
+					<div class="car_footer_clear car_footer_left">
+						清理购物车
+					</div>
+					<div class="car_footer_submit car_footer_right">
+						去结算
+					</div>
+					<div class="car_footer_price car_footer_right">
+						<span class="car_footer_price1">
+						总价:
+					</span>
+						<span class="car_footer_price_num">
+						¥71.60
+					</span>						
+						<br />
+						<span>
+						已节省:
+					</span>
+						<span>
+						-¥0.00
+					</span>
+					</div>
+					<div class="car_footer_checkedsum car_footer_right">
+						已选
+						<span>
+						2
+					</span> 件商品
+					</div>
+					<div class="clear_both"></div>
+	
+				</div>
+	
+				<!--
+                	作者：offline
+                	时间：2018-08-11
+                	描述：列表
+                -->
+				<div class="car_smart_main">
+					<h3>购物车帮你选</h3>
+					<p>看看加购过该商品的人还喜欢哪些</p>
+					<div class="car_smart_cont clearfix">
+						<div class="car_smart_product_wrap">
+							<div class="car_smart_item_main clearfix">
+								<div class="car_smart_pic1">
+									<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="48px" height="48px" />
+								</div>
+								<div class="car_smart_detail">
+									<p>华为荣耀路由2 有线无线双千兆 光纤宽带智能无线路由器 双网双通 双频优选 网口盲插 小白兔</p>
+									<p>荣耀路由2</p>
+									<p class="car_smart_detail_price">¥196.00</p>
+								</div>
+							</div>
+							<div class="car_smart_items clearfix">
+								<ul>
+									<li class="car_smart_li">
+										<div class="car_smart_pic2">
+											<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="150px" height="150px" />
+										</div>
+										<div class="car_smart_item_name">
+											水星（MERCURY）幻影路由D128 1200M无线路由器 稳定穿墙智能双频
+										</div>
+										<div class="car_smart_item_price">
+											¥129.00
+										</div>
+										<div class="car_smart_itemmt">
+											16175人已购买
+	
+										</div>
+									</li>
+									<li class="car_smart_li">
+										<div class="car_smart_pic2">
+											<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="150px" height="150px" />
+										</div>
+										<div class="car_smart_item_name">
+											水星（MERCURY）幻影路由D128 1200M无线路由器 稳定穿墙智能双频
+										</div>
+										<div class="car_smart_item_price">
+											¥129.00
+										</div>
+										<div class="car_smart_itemmt">
+											16175人已购买
+	
+										</div>
+									</li>
+									<li class="car_smart_li">
+										<div class="car_smart_pic2">
+											<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="150px" height="150px" />
+										</div>
+										<div class="car_smart_item_name">
+											水星（MERCURY）幻影路由D128 1200M无线路由器 稳定穿墙智能双频
+										</div>
+										<div class="car_smart_item_price">
+											¥129.00
+										</div>
+										<div class="car_smart_itemmt">
+											16175人已购买
+	
+										</div>
+									</li>
+									<li class="car_smart_li">
+										<div class="car_smart_pic2">
+											<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="150px" height="150px" />
+										</div>
+										<div class="car_smart_item_name">
+											水星（MERCURY）幻影路由D128 1200M无线路由器 稳定穿墙智能双频
+										</div>
+										<div class="car_smart_item_price">
+											¥129.00
+										</div>
+										<div class="car_smart_itemmt">
+											16175人已购买
+	
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="car_smart_product_wrap">
+							<div class="car_smart_item_main clearfix">
+								<div class="car_smart_pic1">
+									<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="48px" height="48px" />
+								</div>
+								<div class="car_smart_detail">
+									<p>华为荣耀路由2 有线无线双千兆 光纤宽带智能无线路由器 双网双通 双频优选 网口盲插 小白兔</p>
+									<p>荣耀路由2</p>
+									<p class="car_smart_detail_price">¥196.00</p>
+								</div>
+							</div>
+							<div class="car_smart_items clearfix">
+								<ul>
+									<li class="car_smart_li">
+										<div class="car_smart_pic2">
+											<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="150px" height="150px" />
+										</div>
+										<div class="car_smart_item_name">
+											水星（MERCURY）幻影路由D128 1200M无线路由器 稳定穿墙智能双频
+										</div>
+										<div class="car_smart_item_price">
+											¥129.00
+										</div>
+										<div class="car_smart_itemmt">
+											16175人已购买
+	
+										</div>
+									</li>
+									<li class="car_smart_li">
+										<div class="car_smart_pic2">
+											<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="150px" height="150px" />
+										</div>
+										<div class="car_smart_item_name">
+											水星（MERCURY）幻影路由D128 1200M无线路由器 稳定穿墙智能双频
+										</div>
+										<div class="car_smart_item_price">
+											¥129.00
+										</div>
+										<div class="car_smart_itemmt">
+											16175人已购买
+	
+										</div>
+									</li>
+									<li class="car_smart_li">
+										<div class="car_smart_pic2">
+											<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="150px" height="150px" />
+										</div>
+										<div class="car_smart_item_name">
+											水星（MERCURY）幻影路由D128 1200M无线路由器 稳定穿墙智能双频
+										</div>
+										<div class="car_smart_item_price">
+											¥129.00
+										</div>
+										<div class="car_smart_itemmt">
+											16175人已购买
+	
+										</div>
+									</li>
+									<li class="car_smart_li">
+										<div class="car_smart_pic2">
+											<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="150px" height="150px" />
+										</div>
+										<div class="car_smart_item_name">
+											水星（MERCURY）幻影路由D128 1200M无线路由器 稳定穿墙智能双频
+										</div>
+										<div class="car_smart_item_price">
+											¥129.00
+										</div>
+										<div class="car_smart_itemmt">
+											16175人已购买
+	
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+	
+					</div>
+				</div> 
+
+				<!--
+                	作者：offline
+                	时间：2018-08-11
+                	描述：
+                -->
+				<div class="car_tuijian">
+					<div class="mt clearfix">
+						<a href="" class="mt_a curr">猜你喜欢</a>
+						<a href="" class="mt_a">随手购</a>
+						<a href="" class="mt_a">我的关注</a>
+					</div>
+					<ul class="clearfix">
+						<li class="tabs_new">
+							<div class="tabs_item">
+								<div class="tabs_item_img">
+									<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="160" height="160" />
+								</div>
+								<div class="tabs_item_name">
+									netLINK 光纤收发器 htb-gs-03/20km千兆单模双纤光电转换器外电 一对价
+								</div>
+								<div class="tabs_item_price">
+									￥296.00
+								</div>
+								<div class="tabs_item_btn">
+									<a href="">加入购物车</a>
+								</div>
+							</div>
+						</li>
+						<li class="tabs_new">
+							<div class="tabs_item">
+								<div class="tabs_item_img">
+									<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="160" height="160" />
+								</div>
+								<div class="tabs_item_name">
+									netLINK 光纤收发器 htb-gs-03/20km千兆单模双纤光电转换器外电 一对价
+								</div>
+								<div class="tabs_item_price">
+									￥296.00
+								</div>
+								<div class="tabs_item_btn">
+									<a href="">加入购物车</a>
+								</div>
+							</div>
+						</li>
+						<li class="tabs_new">
+							<div class="tabs_item">
+								<div class="tabs_item_img">
+									<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="160" height="160" />
+								</div>
+								<div class="tabs_item_name">
+									netLINK 光纤收发器 htb-gs-03/20km千兆单模双纤光电转换器外电 一对价
+								</div>
+								<div class="tabs_item_price">
+									￥296.00
+								</div>
+								<div class="tabs_item_btn">
+									<a href="">加入购物车</a>
+								</div>
+							</div>
+						</li>
+						<li class="tabs_new">
+							<div class="tabs_item">
+								<div class="tabs_item_img">
+									<img src="<%=request.getContextPath()%>/resource/front/img/cart2/路由.jpg" width="160" height="160" />
+								</div>
+								<div class="tabs_item_name">
+									netLINK 光纤收发器 htb-gs-03/20km千兆单模双纤光电转换器外电 一对价
+								</div>
+								<div class="tabs_item_price">
+									￥296.00
+								</div>
+								<div class="tabs_item_btn">
+									<a href="">加入购物车</a>
+								</div>
+							</div>
+						</li>
+	
+					</ul>
+	
+				</div>
+			</div>
+			
+			<!--尾部-->
+			<div class="tail">
+				<div class="tail_ad">
+					<img class="tail_ad_img" src="<%=request.getContextPath()%>/resource/front/img/index/footer/footer.png" />
+				</div>
+				<div class="tail_solid"></div>
+				<div class="tail_tools">
+					<div>
+						<ul>
+							<li>购物指南</li>
+							<li>
+								<a href="#">购物流程</a>
+							</li>
+							<li>
+								<a href="#">会员介绍</a>
+							</li>
+							<li>
+								<a href="#">生活旅行/团购</a>
+							</li>
+							<li>
+								<a href="#">常见问题</a>
+							</li>
+							<li>
+								<a href="#">大家电</a>
+							</li>
+							<li>
+								<a href="#">联系客服</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<ul>
+							<li>配送方式</li>
+							<li>
+								<a href="#">上门自提</a>
+							</li>
+							<li>
+								<a href="#">211限时达</a>
+							</li>
+							<li>
+								<a href="#">配送服务查询</a>
+							</li>
+							<li>
+								<a href="#">配送收费标准</a>
+							</li>
+							<li>
+								<a href="#">海外配送</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<ul>
+							<li>支付方式</li>
+							<li>
+								<a href="#">货到付款</a>
+							</li>
+							<li>
+								<a href="#">在线支付</a>
+							</li>
+							<li>
+								<a href="#">分期付款</a>
+							</li>
+							<li>
+								<a href="#">邮局汇款</a>
+							</li>
+							<li>
+								<a href="#">公司转账</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<ul>
+							<li>售后服务</li>
+							<li>
+								<a href="#">售后政策</a>
+							</li>
+							<li>
+								<a href="#">价格保护</a>
+							</li>
+							<li>
+								<a href="#">退款说明</a>
+							</li>
+							<li>
+								<a href="#">返修/退换货</a>
+							</li>
+							<li>
+								<a href="#">取消订单</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<ul>
+							<li>特色服务</li>
+							<li>
+								<a href="#">夺宝岛</a>
+							</li>
+							<li>
+								<a href="#">DIY装机</a>
+							</li>
+							<li>
+								<a href="#">延保服务</a>
+							</li>
+							<li>
+								<a href="#">京东E卡</a>
+							</li>
+							<li>
+								<a href="#">京东通信</a>
+							</li>
+							<li>
+								<a href="#">京东JD+</a>
+							</li>
+						</ul>
+					</div>
+	
+				</div>
+				<div class="tail_solid"></div>
+				<div class="tail_reg">
+					<div>
+						<ul class="tail_font_type1 clearfix">
+							<li>
+								<a href="#">我的订单</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">我的京东</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">京东会员</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">企业采购</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">客户服务</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">网站导航</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">手机京东</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">我的订单</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">我的京东</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">京东会员</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">企业采购</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">客户服务</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">网站导航</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">手机京东</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">手机京东</a>
+							</li>
+						</ul>
+					</div>
+					<div style="margin: 15px auto 0px;width: 885px;">
+						<ul class="clearfix">
+							<li>
+								<a href="#">京公网安备 11000002000088号</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">京ICP证070359号</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">新出发京零 字第大120007号</a>
+							</li>
+						</ul>
+					</div>
+					<div style="margin: 5px auto;width: 935px;">
+						<ul class="clearfix">
+							<li>
+								<a href="#">互联网出版许可证编号新出网证(京)字150号</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">出版物经营许可证</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">网络文化经营许可证京网文[2014]2148-348号</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">违法和不良信息举报电话：4006561155</a>
+							</li>
+						</ul>
+					</div>
+					<div style="margin: 5px auto;width: 805px;">
+						<ul class="tail_font_type2 clearfix">
+							<li>Copyright © 2004 - 2018 京东JD.com 版权所有</li>
+							<li><span>|</span></li>
+							<li>消费者维权热线：4006067733&nbsp;&nbsp;&nbsp;&nbsp;经营证照</li>
+							<li><span>|</span></li>
+							<li>(京)网械平台备字(2018)第00003号</li>
+						</ul>
+					</div>
+					<div style="margin: 5px auto;width: 298px;">
+						<ul class="clearfix">
+							<li>
+								<a href="#"><img src="<%=request.getContextPath()%>/resource/front/img/index/footer/3.png" />网站1</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#"><img src="<%=request.getContextPath()%>/resource/front/img/index/footer/3.png" />网站2</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#"><img src="<%=request.getContextPath()%>/resource/front/img/index/footer/3.png" />网站3</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#"><img src="<%=request.getContextPath()%>/resource/front/img/index/footer/3.png" />网站4</a>
+							</li>
+						</ul>
+					</div>
+					<div style="margin: 5px auto;width: 225px;">
+						<ul class="tail_font_type2 clearfix">
+							<li>京东旗下网站：
+								<a href="#">京东钱包</a>
+							</li>
+							<li><span>|</span></li>
+							<li>
+								<a href="#">京东云</a>
+							</li>
+						</ul>
+					</div>
+					<div style="margin: 5px auto;width: 450px;">
+						<a href="#" style="width: 50px;"></a>
+						<ul class="clearfix">
+							<li>
+								<a href="#"><img src="<%=request.getContextPath()%>/resource/front/img/index/footer/1.png" /></a>
+							</li>
+							<li>
+								<a href="#" style="display: block;">XXX</a>
+								<a href="#">XXXXX</a>
+							</li>
+							<li>
+								<a href="#"><img src="<%=request.getContextPath()%>/resource/front/img/index/footer/1.png" /></a>
+							</li>
+							<li>
+								<a href="#" style="display: block;">XXXXXX</a>
+								<a href="#">XXXX</a>
+							</li>
+							<li>
+								<a href="#"><img src="<%=request.getContextPath()%>/resource/front/img/index/footer/1.png" /></a>
+							</li>
+							<li>
+								<a href="#" style="display: block;">XXXXX</a>
+								<a href="#">XXXXXXXX</a>
+							</li>
+							<li>
+								<a href="#"><img src="<%=request.getContextPath()%>/resource/front/img/index/footer/1.png" /></a>
+							</li>
+							<li>
+								<a href="#" style="display: block;">XXXXX</a>
+								<a href="#">XXXXX</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

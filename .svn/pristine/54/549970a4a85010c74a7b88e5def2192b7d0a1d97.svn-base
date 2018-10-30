@@ -1,0 +1,22 @@
+package com.iwonder.tea.ord.dao;
+
+import java.util.ArrayList;
+
+import com.iwonder.tea.ord.entity.Order;
+import com.iwonder.tea.ord.view.OrderConditionView;
+import com.iwonder.tea.ord.view.OrderQueryView;
+
+public interface IOrderDao {
+	public ArrayList<Order> list();
+
+	public ArrayList<OrderQueryView> list(OrderConditionView orderConditionView);
+
+	public void delete(String orderId);
+
+	public void insert(Order order);
+
+	public void update(Order order);
+
+	public Order load(String orderId);
+
+}

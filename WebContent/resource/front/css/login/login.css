@@ -1,0 +1,261 @@
+/*******************************头部分**********************************/
+.header{
+	width:990px;
+	height:80px;
+	margin: 0 auto;
+}
+.header span{
+	top: 5px;
+	left: 20px;
+	font-size: 24px;
+	font-family:  arial;
+	color: #3A3A3A;
+}
+.header img{
+	top: 16px;
+	display: inline-block;
+}
+.header-search{
+	position: absolute;
+	right: 0px;
+	bottom: 5px;
+	font-size: 13px;
+}
+.header a:hover{
+	color: #E4393C;
+}
+
+
+
+/*******************************公告**********************************/
+.notice{
+	height:40px;
+	margin: 0 auto;
+	background:#FFF8F0 ;
+}
+.notice p{
+	text-align: center;
+	color: #999999;
+	font-size: 13px;
+	line-height: 40px;
+	font-family: "宋体";
+}
+.notice img{
+	display: inline-block;
+	top:3px;
+	right: 5px;
+}
+.notice a{
+	color:#000000;
+}
+.notice a:hover{
+	color:#E4393C;
+}
+
+.header i{
+	position: absolute;
+	display: inline-block;
+	width:18px;
+	height: 14px;
+	background: url(/tea_dynamic/resource/front/img/login/q-icon);
+	right: 122px;
+	bottom: 7px;
+}
+
+
+
+/*******************************中部**********************************/
+.body{
+	height: 475px;
+	background: #930221;
+}
+.body_main{
+	width:990px;
+	height:475px;
+	margin: 0 auto;
+}
+.body_main img{
+	position: absolute;
+	width:990px;
+	height:475px;
+}
+
+
+/*___________________表单____________________*/
+.body_login{
+	position: absolute;
+	right: 0px;
+	top:10px;
+	background: white;
+	width:350px;
+	height:400px;
+	z-index: 2;
+}
+.body_login_header{
+	height: 40px;
+	background: #FFF8F0;
+}
+.body_login_header img{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	top:12px;
+	left: 20px;
+}
+.body_login_header p{
+	text-align: center;
+	color: #999999;
+	font-size: 12px;
+	line-height: 40px;
+	font-family: "宋体";
+}
+.body_login_choice{
+	height:35px;
+	padding-top: 10px;
+}
+.body_login_choice li{
+	float: left;
+	font-size: 18px;
+	font-family:  arial;
+	color: #F3F3F3;
+	margin-right:45px ;
+}
+.body_login_choice a{
+	font-size: 18px;
+	font-family:  arial;
+	color: #666666;
+}
+.body_login_choice a:hover{
+	color:#E4393C;
+	font-weight: bold;
+}
+.body_login_choice ul{
+	margin: 0 auto;
+	width: 239px;
+	height: 24px;
+}
+.body_login_cont{
+	height: 263px;
+	border-top: 1px solid #F4F4F4;
+	border-bottom: 1px solid #F4F4F4;
+}
+.body_login_cont_form{
+	width:300px;
+	height: 200px;
+	margin: 0 auto;
+	top:20px;
+	z-index: 2;
+}
+.body_login_footer{
+	height: 40px;
+	background: #FCFCFC;
+}
+
+.body_login_footer .QQ-icon {
+    background-position: 0px 0px;
+}
+.body_login_footer ul{
+
+	width: 155px;height: 20px;
+	top:15px;
+	left: 20px;
+}
+.body_login_footer span{
+	display: inline-block;
+	position: relative;
+	top:-3px;
+	left: 4px;
+	
+}
+.body_login_footer .Weixin-icon {
+    background-position: -19px 0px;
+}
+.body_login_footer li{
+	float: left;margin-right: 20px;color: #DDDDDD;
+}
+
+.body_login_footer b {
+    width: 19px;
+    height: 18px;
+    display: inline-block;
+    background: url(../../img/login/QQ-weixin.png) no-repeat;
+}
+.body_login_footer_reg {
+	position: absolute;
+	color: #b61d1d;
+	right: 10px;
+	top:15px;
+	font-size: 14px;
+}
+.icon-login{
+	background: url(../../img/login/login-icons.png) no-repeat;
+}
+.body_login_footer i{
+	position: absolute;
+	right: 65px;
+	top:18px;
+	width:20px;
+	height: 18px;
+	display: inline-block;
+	background-position: -103px -74px;
+}
+.p1{
+	top:30px;
+	left: 30px;
+	display: block;
+	color: #999999;
+	font-size: 16px;
+}
+.p1 input{
+	height: 30px;
+	width: 200px;
+}
+.p2{
+	top:50px;
+	left: 30px;
+	display: block;
+	color: #999999;
+	font-size: 16px;
+}
+.p2 input{
+	height: 30px;
+	width: 200px;
+}
+.p3{
+	top:70px;
+	left: 90px;
+	
+	display: block;
+	color: #999999;
+	font-size: 16px;
+}
+.p3 input{
+	height: 30px;
+	width: 130px;
+}
+
+
+
+
+
+
+
+/*******************************中部**********************************/
+.footer{
+	width: 990px;
+	margin: 0 auto;
+}
+.footer p{
+	color:#666;text-align: center;
+}
+.footer li{
+	float: left;margin-right: 15px;color:#666;
+}
+.footer a{
+	color:#666;
+}
+.footer_nav{
+	width: 930px;
+	height: 16px;
+	margin: 15px auto;
+}

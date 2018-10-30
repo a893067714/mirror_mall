@@ -1,0 +1,135 @@
+package com.iwonder.tea.front;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.iwonder.tea.cart.entity.Cart;
+import com.iwonder.tea.cart.service.ICartService;
+import com.iwonder.tea.cart.service.imp.CartServiceImp;
+import com.iwonder.tea.cart.view.CartQueryView;
+import com.iwonder.tea.framework.action.BaseServlet;
+import com.iwonder.tea.framework.service.ProxyServiceFactory;
+import com.iwonder.tea.framework.util.StringUtil;
+import com.iwonder.tea.framework.util.UUIDUtils;
+import com.iwonder.tea.ord.service.IOrderService;
+import com.iwonder.tea.ord.service.imp.OrderServiceImp;
+import com.iwonder.tea.prd.entity.ProductSku;
+import com.iwonder.tea.prd.service.IProductSkuService;
+import com.iwonder.tea.prd.service.imp.ProductSkuServiceImp;
+import com.iwonder.tea.prd.view.ProductSkuQueryView;
+import com.iwonder.tea.usr.entity.UserInfo;
+
+/**
+ * Servlet implementation class AddCartServlet
+ */
+@WebServlet("/UpdateCartServlet.do")
+public class UpdateCartServlet extends BaseServlet {
+	private IProductSkuService iProductSkuService = (IProductSkuService) ProxyServiceFactory
+			.getProxyService(ProductSkuServiceImp.class);
+	private ICartService cartService = (ICartService) ProxyServiceFactory.getProxyService(CartServiceImp.class);
+	private IOrderService orderService = (IOrderService) ProxyServiceFactory.getProxyService(OrderServiceImp.class);
+	private static final long serialVersionUID = 1L;
+
+	public UpdateCartServlet() {
+		super();
+	}
+
+	protected void addCart(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String productSkuId = request.getParameter("productSkuId");
+		System.out.println(productSkuId);
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+		System.out.println(userInfo.getUserId());
+		Cart cart = new Cart();
+		cart.setCartCode(UUIDUtils.getId());
+		cart.setCartId(UUIDUtils.getId());
+		cart.setProductSkuId(productSkuId);
+		cart.setQuantity(1);
+		cart.setUserId(userInfo.getUserId());
+		cart.setStatDelete("no_delete");
+		cart.setStatCheck("yes_check");
+		cartService.insert(cart);
+		// ArrayList<CartQueryView> arr =
+		// cartService.list(userInfo.getUserId());
+		// request.setAttribute("arr1", arr);
+		response.sendRedirect("CartServlet.do");
+		// request.getRequestDispatcher("/WEB-INF/jsp/front/addCart.jsp").forward(request,
+		// response);
+	}
+
+	protected void delCart(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// s1.取参数
+		String cartId = request.getParameter("cartId");
+		System.out.println(cartId);
+		cartService.delete(cartId);
+		response.sendRedirect("AddCartServlet.do");
+		// request.getRequestDispatcher("AddCartServlet.do").forward(request,
+		// response);
+	}
+
+	protected void updateQuantity(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// s1.取参数
+		String quantity = request.getParameter("quantity");
+		System.out.println(quantity);
+		String cartId = request.getParameter("cartId");
+		String m = request.getParameter("m");
+		System.out.println("???????????????????????????????????????????????????????????????????");
+		System.out.println(m);
+		if (m.equals("add")) {
+			Integer val = new Integer(quantity);
+			val++;
+			quantity = val.toString();
+			System.out.println(quantity + "==============================22222222222222");
+		} else {
+			Integer val = new Integer(quantity);
+			val--;
+			quantity = val.toString();
+		}
+		System.out.println(cartId);
+		cartService.update(cartId, quantity);
+		// response.sendRedirect("AddCartServlet.do");
+
+		request.getRequestDispatcher("AddCartServlet.do").forward(request, response);
+	}
+
+	// 去结算
+	protected void settlement(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// s1.取参数
+
+		String[] productSkuId = request.getParameterValues("productSkuId");
+		System.out.println(Arrays.toString(productSkuId));
+
+		if (productSkuId == null) {
+			request.setAttribute("msg", "请勾选需要结算的购物车");
+			request.getRequestDispatcher("AddCartServlet.do").forward(request, response);
+			return;
+		}
+		ArrayList<ProductSkuQueryView> productSkuList = new ArrayList<>();
+		BigDecimal sumPrice = new BigDecimal(0);
+
+		ProductSkuQueryView productSkuQueryView = new ProductSkuQueryView();
+		for (String proSkuId : productSkuId) {
+			productSkuQueryView = iProductSkuService.loadView(proSkuId);
+			productSkuList.add(productSkuQueryView);
+		}
+		System.out.println(productSkuList.toString());
+		for (ProductSkuQueryView proSkuQueryView : productSkuList) {
+			sumPrice = sumPrice.add(proSkuQueryView.getPriceCurrent());
+		}
+		String sumprice = sumPrice.toString();
+		request.setAttribute("productSkuList", productSkuList);
+		request.setAttribute("sumprice", sumprice);
+		request.getRequestDispatcher("BalanceServlet.do").forward(request, response);
+	}
+
+}

@@ -1,0 +1,63 @@
+package com.iwonder.tea.front.action;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.iwonder.tea.cart.entity.Cart;
+import com.iwonder.tea.cart.service.ICartService;
+import com.iwonder.tea.cart.service.imp.CartServiceImp;
+import com.iwonder.tea.cart.view.CartQueryView;
+import com.iwonder.tea.framework.service.ProxyServiceFactory;
+import com.iwonder.tea.framework.util.UUIDUtils;
+import com.iwonder.tea.usr.entity.UserInfo;
+
+/**
+ * Servlet implementation class AddCartServlet
+ */
+@WebServlet("/AddCartServlet.do")
+public class AddCartServlet extends HttpServlet {
+
+	private ICartService cartService = (ICartService) ProxyServiceFactory.getProxyService(CartServiceImp.class);
+	private static final long serialVersionUID = 1L;
+
+	public AddCartServlet() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		String productSkuId = request.getParameter("productSkuId");
+		System.out.println(productSkuId);
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+		System.out.println(userInfo.getUserId());
+		Cart cart = new Cart();
+		cart.setCartCode(UUIDUtils.getId());
+		cart.setCartId(UUIDUtils.getId());
+		cart.setProductSkuId(productSkuId);
+		cart.setQuantity(1);
+		cart.setUserId(userInfo.getUserId());
+		cart.setStatDelete("no_delete");
+		cart.setStatCheck("yes_check");
+		cartService.insert(cart);
+		ArrayList<CartQueryView> arr = cartService.list(userInfo.getUserId());
+		request.setAttribute("arr1", arr);
+
+		request.getRequestDispatcher("/WEB-INF/jsp/front/addCart.jsp").forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		doGet(request, response);
+	}
+
+}

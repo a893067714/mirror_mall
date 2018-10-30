@@ -1,0 +1,46 @@
+package com.iwonder.tea.usr.service.imp;
+
+import java.util.ArrayList;
+
+import com.iwonder.tea.usr.dao.IAddressInfoDao;
+import com.iwonder.tea.usr.dao.imp.AddressInfoDaoImp;
+import com.iwonder.tea.usr.entity.AddressInfo;
+import com.iwonder.tea.usr.service.IAddressInfoService;
+import com.iwonder.tea.usr.view.AddressInfoConditionView;
+import com.iwonder.tea.usr.view.AddressInfoQueryView;
+
+public class AddressInfoServiceImp implements IAddressInfoService{
+	private IAddressInfoDao addressInfoDao = new AddressInfoDaoImp();
+
+	public ArrayList<AddressInfo> list() {
+
+		return addressInfoDao.list();
+
+	}
+	
+	public ArrayList<AddressInfoQueryView> list(AddressInfoConditionView addressInfoConditionView) {
+
+		return addressInfoDao.list(addressInfoConditionView);
+
+	}
+
+	public AddressInfo load(String addressId) {
+		return addressInfoDao.load(addressId);
+	}
+
+	public void insert(AddressInfo addressId) {
+		addressInfoDao.insert(addressId);
+	}
+
+	public void update(AddressInfo addressInfo) {
+
+		addressInfoDao.update(addressInfo);
+
+	}
+
+	public void delete(String addressId) {
+
+		addressInfoDao.delete(addressId);
+
+	}
+}

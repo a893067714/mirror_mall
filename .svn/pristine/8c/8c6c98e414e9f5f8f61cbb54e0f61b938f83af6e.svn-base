@@ -1,0 +1,43 @@
+package com.iwonder.tea.front.action;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.iwonder.tea.framework.service.ProxyServiceFactory;
+import com.iwonder.tea.framework.web.SessionManager;
+import com.iwonder.tea.usr.entity.AddressInfo;
+import com.iwonder.tea.usr.entity.UserInfo;
+import com.iwonder.tea.usr.service.IAddressInfoService;
+import com.iwonder.tea.usr.service.IUserInfoService;
+import com.iwonder.tea.usr.service.imp.AddressInfoServiceImp;
+import com.iwonder.tea.usr.service.imp.UserInfoServiceImp;
+
+@WebServlet("/AddressServlet.do")
+public class AddressServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private IAddressInfoService iAddressInfoService = (IAddressInfoService) ProxyServiceFactory.getProxyService(AddressInfoServiceImp.class);
+
+	public AddressServlet() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		AddressInfo addressInfo=iAddressInfoService.load("1001");
+		request.setAttribute("addressInfo", addressInfo);
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		request.getRequestDispatcher("/WEB-INF/jsp/front/address.jsp").forward(request, response);
+	}
+
+}

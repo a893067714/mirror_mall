@@ -1,0 +1,159 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>收银台</title>
+		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/front/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resource/front/css/pay/pay.css"/>
+	</head>
+	<body>
+		<div class="all">
+			<img src="<%=request.getContextPath()%>/resource/front/img/pay/pc_icon_payment-bg-1.jpg"/>
+			<div class="header clearfix">
+				<img src="<%=request.getContextPath()%>/resource/front/img/pay/jd-logo.png"/>
+				<ul>
+					<li>
+						<a href="" target="_blank">jd_5b4f976dde856</a>
+					</li>
+					<li>|</li>
+					<li>
+						<a href="" target="_blank">我的订单</a>
+					</li>
+					<li>|</li>
+					<li>
+						<a href="" target="_blank">支付帮助</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="middle">
+				<div class="middle-top">
+					<div class="middle-top-left clearfix">
+						<img src="<%=request.getContextPath()%>/resource/front/img/pay/getQrCodeImage.png"/>
+						<h3>订单提交成功，请尽快付款！订单号：78067060480</h3>
+						<p>
+							<span>
+								推荐使用
+								<a href=""><img src="<%=request.getContextPath()%>/resource/front/img/pay/jd-xiaotubaio.png" title="手机京东App"/></a>
+								<a href=""><img src="<%=request.getContextPath()%>/resource/front/img/pay/jd-xiaotubaio.png" title="京东金融App"/></a>
+								扫码支付
+							</span>
+							<span>
+								请您在
+								<span style="color: #e31613;">24小时</span>
+								内完成支付，否则订单会被自动取消(库存紧俏订单请参见详情页时限)
+							</span>
+						</p>
+					</div>
+					<div class="middle-top-right clearfix">
+						<div class="middle-top-right-1">
+							<p>
+								应付金额
+								<strong>1079.10</strong>
+								元
+							</p>
+						</div>
+						<div class="middle-top-right-1" style="width: 50px;left: 125px;">
+							<a href="">订单详情</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="middle-centre">
+					<div class="middle-centre-1">
+						<img src="<%=request.getContextPath()%>/resource/front/img/pay/jd-xlogo.png" style="right: 128px;"/>
+						<img src="<%=request.getContextPath()%>/resource/front/img/pay/文字.png" style="right: 108px;bottom: 5px;"/>
+					</div>
+					<div class="middle-centre-2">
+						<input type="checkbox" name="checkbox" id="checkbox"/>
+						<span>
+							<img src="<%=request.getContextPath()%>/resource/front/img/pay/白条.png" style="width: 24px;height: 30px;margin-left: 30px;top: 5px;"/>
+							<strong>打白条</strong>
+							<img src="<%=request.getContextPath()%>/resource/front/img/pay/wenhao.png" style="margin-left: 5px;bottom: 5px;"/>
+						</span>
+						<div class="middle-centre-2-a clearfix">
+							可用额度  1000.00元
+							<span style="color: #DDDDDD;">|</span>
+							白条还款日 2018-08-23
+							<span style="color: #DDDDDD;">|</span>
+							<span class="middle-centre-2-a-a">
+								<span class="middle-centre-2-span" >优惠</span>
+								<b style="color: #E31613;left: 10px;">请选择</b>
+							</span>
+						</div>
+					</div>
+					<div class="middle-centre-2">
+						<input type="checkbox" name="checkbox" id="checkbox"/>
+						<span>
+							<img src="<%=request.getContextPath()%>/resource/front/img/pay/金库.png" style="width: 26px;height: 26px;margin-left: 30px;"/>
+							<strong>京东小金库</strong>							
+						</span>
+						<div class="middle-centre-2-a clearfix" style="margin-right: 460px;">
+							可用额度  0000.00元
+							<span style="color: #DDDDDD;">|</span>
+							可用额度  0000.00元								
+						</div>
+					</div>
+					<div class="middle-centre-2">
+						<input type="checkbox" name="checkbox" id="checkbox"/>
+						<span>
+							<img src="<%=request.getContextPath()%>/resource/front/img/pay/ABC.png" style="width: 26px;height: 26px;margin-left: 30px;top: 5px;"/>
+							<strong>农业银行</strong>							
+						</span>
+						<div class="middle-centre-2-a clearfix" style="margin-right: 490px;">
+							储蓄卡 (6666)							
+							<span class="middle-centre-2-a-a" >
+								<span class="middle-centre-2-span">优惠</span>
+								<b style="color: #E31613;left: 10px;">单单减最高99元</b>
+							</span>
+						</div>
+					</div>
+					<div class="middle-centre-2">
+						<input type="checkbox" name="checkbox" id="checkbox"/>
+						<span>							
+							<strong style="margin-left: 33px;">钱包余额</strong>							
+						</span>
+						<div class="middle-centre-2-a clearfix" style="color: #999999;margin-right: 552px;">
+							可用 0.00元
+							<span style="color: #DDDDDD;">|</span>
+							余额 0.00元							
+						</div>
+					</div>
+					<div class="middle-centre-3">
+						<a href="" style="margin-left: 66px;">更多付款方式</a>
+						<a href="">添加新卡 / 网银支付</a>
+					</div>
+					<div class="middle-centre-4">
+						<a href="">立即支付</a>
+					</div>
+				</div>
+				
+				<div class="middle-bottom" style="margin-top: 40px;">
+					<div class="middle-bottom-left clearfix">
+						<a href="">
+							<img src="<%=request.getContextPath()%>/resource/front/img/pay/PAY-UNION.png" style="width: 26px;height: 26px;top: 8px;"/>
+							中国银联
+						</a>
+					</div>								
+					<div class="middle-bottom-right clearfix">
+						<span style="color: #DDDDDD;right: 30px;">|</span>
+						<a href="">
+							<img src="<%=request.getContextPath()%>/resource/front/img/pay/PAY-WEIXIN.png" style="width: 26px;height: 26px;top: 8px;"/>
+							微信支付
+						</a>	
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="tail">
+				<span style="margin-left: 100px;">Copyright © 2004-2018  京东JD.com 版权所有</span>
+				<img src="<%=request.getContextPath()%>/resource/front/img/pay/footer-auth.png"/>
+				<span>由网银在线（北京）科技有限公司提供技术支持</span>
+			</div>
+			
+		</div>
+	</body>
+</html>

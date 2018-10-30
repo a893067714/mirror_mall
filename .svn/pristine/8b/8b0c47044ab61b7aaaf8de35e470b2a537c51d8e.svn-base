@@ -1,0 +1,77 @@
+package com.iwonder.tea.front;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.iwonder.tea.cart.entity.Cart;
+import com.iwonder.tea.cart.service.ICartService;
+import com.iwonder.tea.cart.service.imp.CartServiceImp;
+import com.iwonder.tea.cart.view.CartQueryView;
+import com.iwonder.tea.framework.action.BaseServlet;
+import com.iwonder.tea.framework.service.ProxyServiceFactory;
+import com.iwonder.tea.framework.util.UUIDUtils;
+import com.iwonder.tea.ord.service.IOrderService;
+import com.iwonder.tea.ord.service.imp.OrderServiceImp;
+import com.iwonder.tea.usr.entity.UserInfo;
+
+/**
+ * Servlet implementation class AddCartServlet
+ */
+@WebServlet("/UpdateCartServlet.do")
+public class UpdateCartServlet extends BaseServlet {
+
+	private ICartService cartService = (ICartService) ProxyServiceFactory.getProxyService(CartServiceImp.class);
+	private IOrderService orderService = (IOrderService) ProxyServiceFactory.getProxyService(OrderServiceImp.class);
+	private static final long serialVersionUID = 1L;
+
+	public UpdateCartServlet() {
+		super();
+	}
+
+	protected void addCart(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String productSkuId = request.getParameter("productSkuId");
+		System.out.println(productSkuId);
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+		System.out.println(userInfo.getUserId());
+		Cart cart = new Cart();
+		cart.setCartCode(UUIDUtils.getId());
+		cart.setCartId(UUIDUtils.getId());
+		cart.setProductSkuId(productSkuId);
+		cart.setQuantity(1);
+		cart.setUserId(userInfo.getUserId());
+		cart.setStatDelete("no_delete");
+		cart.setStatCheck("yes_check");
+		cartService.insert(cart);
+		ArrayList<CartQueryView> arr = cartService.list(userInfo.getUserId());
+		request.setAttribute("arr1", arr);
+
+		request.getRequestDispatcher("/WEB-INF/jsp/front/addCart.jsp").forward(request, response);
+	}
+
+	protected void delCart(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// s1.取参数
+		String cartId = request.getParameter("cartId");
+		System.out.println(cartId);
+		cartService.delete(cartId);
+
+		request.getRequestDispatcher("AddCartServlet.do").forward(request, response);
+	}
+	protected void settlement(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// s1.取参数
+		Map<String, String[]> map  = request.getParameterMap();
+		System.out.println(map);
+		orderService.insert(null);
+		request.getRequestDispatcher("AddCartServlet.do").forward(request, response);
+	}
+
+}

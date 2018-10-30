@@ -1,0 +1,52 @@
+package com.iwonder.tea.front.action;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.iwonder.tea.dictionary.service.IDictionarySKUService;
+import com.iwonder.tea.dictionary.service.imp.DictionarySKUServiceImp;
+import com.iwonder.tea.framework.action.BaseServlet;
+import com.iwonder.tea.framework.service.ProxyServiceFactory;
+import com.iwonder.tea.ord.service.IOrderSKUService;
+import com.iwonder.tea.ord.service.IOrderService;
+import com.iwonder.tea.ord.service.imp.OrderSKUServiceImp;
+import com.iwonder.tea.ord.service.imp.OrderServiceImp;
+import com.iwonder.tea.ord.view.OrderView;
+import com.iwonder.tea.prd.service.IProductSkuService;
+import com.iwonder.tea.prd.service.imp.ProductSkuServiceImp;
+import com.iwonder.tea.usr.entity.UserInfo;
+
+@WebServlet("/OrderServlet.do")
+public class OrderServlet extends BaseServlet implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private IOrderSKUService orderSKUService = (IOrderSKUService) ProxyServiceFactory
+			.getProxyService(OrderSKUServiceImp.class);
+	private IOrderService orderService = (IOrderService) ProxyServiceFactory.getProxyService(OrderServiceImp.class);
+	private IProductSkuService productSkuService = (IProductSkuService) ProxyServiceFactory
+			.getProxyService(ProductSkuServiceImp.class);
+	private IDictionarySKUService iDictionarySKUService = (IDictionarySKUService) ProxyServiceFactory
+			.getProxyService(DictionarySKUServiceImp.class);
+
+	public OrderServlet() {
+		super();
+	}
+
+	@SuppressWarnings("unused")
+	protected void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute("userInfo");
+		userInfo.getUserId();
+		System.out.println(userInfo.getUserId());
+		ArrayList<OrderView> orderViews = orderService.listView(userInfo.getUserId());
+		request.setAttribute("orderViews", orderViews);
+		System.out.println("执行这里");
+		// 页面的跳转：转发
+		request.getRequestDispatcher("/WEB-INF/jsp/front/order.jsp").forward(request, response);
+
+	}
+}

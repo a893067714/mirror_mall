@@ -1,0 +1,158 @@
+
+*{
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	font-family: verdana;
+	font-size: 12px;
+	overflow-x: hidden;
+}
+
+ul {
+	list-style: none;
+}
+.header {
+	background: #EAEAEA;
+	height: 30px;
+}
+
+.header_nav_left {
+	float: left;
+	height: 20px;
+	width: 250px;
+}
+
+.header_nav_right {
+	float: right;
+	height: 20px;
+	width: 800px;
+}
+
+.header_nav {
+	width: 1210px;
+	margin: 0px auto;
+	padding-top: 5px;
+}
+
+.header ul li {
+	float: left;
+	margin: 0px 8px;
+	color: #999999;
+}
+
+.header_nav a:hover {
+	color: #FF3E1F;
+}
+.wdjd_list>li{
+	float:left;
+	font-size:17px;
+	color:#FFFFFF;	
+	margin-left:50px;
+	left:-220px		
+}
+.wdjd_list .wdjd_list_li{
+position: absolute;
+top:14px;
+left:-60px;
+border: 1px solid #FFB2B2;
+color:#FFB2B2	
+}
+.wdjd_list .wdjd_list_li:hover{
+	background: #FFFFFF;
+	COLOR:#E2231A;
+	
+	
+}
+.set>li{
+margin-top: 5px;
+font-size:12px;
+margin-top:10px;
+margin-left:25px;
+
+	
+}
+.add>li{
+	color:#666666;
+	margin-top:20px;
+	margin-left:50px
+}
+
+.set a:visited{
+	color:#777777;
+}
+.set a:hover{
+	color:#E4393C;
+	text-decoration: underline;
+}
+.botton{
+	padding: 8px 9px;border: 1px solid #cfcfcf;line-height: 18px;height: 35px;background-color: #fff;margin-top: 8px;
+	margin-left:15px;margin-top:20px
+}
+/********************************尾部***********************************/
+.tail {
+	background: #EAEAEA;
+	height: 525px;
+	font-size: 12px;
+}
+.tail_ad {
+	height: 100px;
+	width: 1210px;
+	margin: 0 auto;
+}
+.tail_ad_img{
+	margin-top: 30px;margin-left: 50px;
+}
+
+.tail_tools {
+	height: 200px;
+	width: 1210px;
+	margin: 0px auto;
+}
+
+.tail_tools ul li{
+	font-weight: 700px;
+    color: #777;
+    font-size: 14px;
+}
+.tail_tools a{
+	font-weight: lighter;
+	font-size: 12px;
+    color: #666;
+    line-height: 22px;
+}
+.tail_tools>div{
+	float: left;margin-left:80px;margin-right: 95px;margin-top:25px ;
+}
+.tail_tools a:hover{
+	color:#f30213 ;
+}
+.tail_reg {
+	height: 210px;
+	width: 1210px;
+	margin: 0 auto;
+}
+.tail_reg span{
+	color: #cccccc;
+}
+.tail_reg ul li{
+	color: #999999;
+	float: left;margin-left: 14px;
+}
+.tail_reg ul li a:hover{
+	color: #f30213;
+}
+.tail_solid{
+	border-top: 1px solid #C6C6C6;
+}
+.tail_font_type1{
+	margin-top: 10px;	
+}
+.tail_font_type1 a{
+	color: #666666;
+}
+.tail_font_type2{
+	color: #999999;
+}
